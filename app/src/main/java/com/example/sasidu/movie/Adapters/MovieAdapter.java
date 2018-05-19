@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.sasidu.movie.Models.Movie;
 import com.example.sasidu.movie.R;
+import com.example.sasidu.movie.Util.Constants;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -40,9 +41,9 @@ public class MovieAdapter extends RecyclerView.Adapter <MovieAdapter.MiViewHolde
         Movie currentItem = mData.get(position);
 
         holder.movie_tittle.setText(currentItem.getmName());
-        holder.rating.setRating(Integer.parseInt(currentItem.getmRating()));
+        holder.rating.setRating(Float.parseFloat(currentItem.getmRating()));
         Picasso.with(mContext)
-                .load(currentItem.getmUrl())
+                .load(Constants.IMAGE_BASE_URL+currentItem.getmUrl())
                 .into(holder.imgurl);
 
 
@@ -55,7 +56,7 @@ public class MovieAdapter extends RecyclerView.Adapter <MovieAdapter.MiViewHolde
 
     public static class MiViewHolder extends RecyclerView.ViewHolder{
 
-        TextView movie_tittle;;
+        TextView movie_tittle;
         ImageView imgurl;
         RatingBar rating;
 
