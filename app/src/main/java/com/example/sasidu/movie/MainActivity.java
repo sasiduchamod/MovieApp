@@ -11,6 +11,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.sasidu.movie.Adapters.GenreAdapter;
+import com.example.sasidu.movie.Models.Genre;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,8 +23,8 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
-    private ExampleAdapter mExampleAdapter;
-    private ArrayList<exampletemp> mExampleList;
+    private GenreAdapter mGenreAdapter;
+    private ArrayList<Genre> mExampleList;
     private RequestQueue mRequestQueue;
 
     @Override
@@ -35,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         mExampleList = new ArrayList<>();
-
         mRequestQueue = Volley.newRequestQueue(this);
         parseJson();
     }
@@ -57,11 +58,11 @@ public class MainActivity extends AppCompatActivity {
                         String id = gen.getString("id");
                         String Name = gen.getString("name");
 
-                        mExampleList.add(new exampletemp(id, Name));
+                        mExampleList.add(new Genre(Name, id));
                     }
 
-                    mExampleAdapter = new ExampleAdapter(MainActivity.this,mExampleList);
-                    mRecyclerView.setAdapter(mExampleAdapter);
+                    mGenreAdapter = new GenreAdapter(MainActivity.this,mExampleList);
+                    mRecyclerView.setAdapter(mGenreAdapter);
 
                 } catch (JSONException e) {
                     e.printStackTrace();

@@ -1,6 +1,8 @@
-package com.example.sasidu.movie;
+package com.example.sasidu.movie.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,18 +10,21 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.sasidu.movie.MovieDetailsActivity;
+import com.example.sasidu.movie.Models.Genre;
+import com.example.sasidu.movie.R;
 import com.example.sasidu.movie.data.GenreImages;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class ExampleAdapter extends RecyclerView.Adapter <ExampleAdapter.ExampleViewHolder>{
+public class GenreAdapter extends RecyclerView.Adapter <GenreAdapter.ExampleViewHolder>{
 
     private Context mContext;
-    private ArrayList<exampletemp> mExamoleList;
+    private ArrayList<Genre> mExamoleList;
 
 
-    public ExampleAdapter(Context context, ArrayList<exampletemp> exampleList)
+    public GenreAdapter(Context context, ArrayList<Genre> exampleList)
     {
         mContext = context;
         mExamoleList = exampleList;
@@ -35,15 +40,25 @@ public class ExampleAdapter extends RecyclerView.Adapter <ExampleAdapter.Example
     @Override
     public void onBindViewHolder(ExampleViewHolder holder, int position) {
 
-        exampletemp currentItem = mExamoleList.get(position);
+        final Genre currentItem = mExamoleList.get(position);
         Picasso.with(mContext)
                 .load(GenreImages.getGenreImage(position))
                 .into(holder.genreImage);
-        String id = currentItem.getId();
+        final String id = currentItem.getId();
         String Name = currentItem.getName();
         holder.mId.setText(id);
         holder.mName.setText(Name);
-        }
+
+        holder.genreCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, MovieDetailsActivity.class);
+                intent.putExtra("genreID",currentItem.getId());
+                mContext.startActivity(intent);
+            }
+        });
+
+    }
 
     @Override
     public int getItemCount() {
@@ -55,12 +70,14 @@ public class ExampleAdapter extends RecyclerView.Adapter <ExampleAdapter.Example
         public TextView mId;
         public TextView mName;
         ImageView genreImage;
+        CardView genreCard;
 
         public ExampleViewHolder(View itemView) {
             super(itemView);
             mId = itemView.findViewById(R.id.text_view_id);
             mName = itemView.findViewById(R.id.text_view_name);
             genreImage = itemView.findViewById(R.id.image_view);
+            genreCard = itemView.findViewById(R.id.genreCard);
 
         }
     }

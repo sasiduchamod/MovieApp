@@ -1,12 +1,12 @@
-package com.example.sasidu.movie;
+package com.example.sasidu.movie.Models;
 
-public class exampletemp {
+public class Genre {
 
     private String mName;
     private  String mId;
 
 
-    public exampletemp(String name, String id)
+    public Genre(String name, String id)
     {
         mName= name;
         mId = id;
