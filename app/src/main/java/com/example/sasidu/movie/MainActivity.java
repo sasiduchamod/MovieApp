@@ -20,6 +20,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import static com.example.sasidu.movie.Util.Constants.API_KEY;
+
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
@@ -43,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void parseJson(){
 
-        String url = "https://api.themoviedb.org/3/genre/movie/list?api_key=26061262b87bbb9018b834fe23feb236&language=en-US";
+        String url = "https://api.themoviedb.org/3/genre/movie/list?api_key="+API_KEY+"&language=en-US";
 
         JsonObjectRequest request  = new JsonObjectRequest(Request.Method.GET, url, null
                 , new Response.Listener<JSONObject>() {

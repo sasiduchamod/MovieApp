@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.sasidu.movie.MovieDetailsActivity;
+import com.example.sasidu.movie.MovieCollectionActivity;
 import com.example.sasidu.movie.Models.Genre;
 import com.example.sasidu.movie.R;
 import com.example.sasidu.movie.data.GenreImages;
@@ -52,7 +52,7 @@ public class GenreAdapter extends RecyclerView.Adapter <GenreAdapter.ExampleView
         holder.genreCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext, MovieDetailsActivity.class);
+                Intent intent = new Intent(mContext, MovieCollectionActivity.class);
                 intent.putExtra("genreID",currentItem.getId());
                 mContext.startActivity(intent);
             }

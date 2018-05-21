@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
@@ -14,9 +13,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.sasidu.movie.Adapters.GenreAdapter;
 import com.example.sasidu.movie.Adapters.MovieAdapter;
-import com.example.sasidu.movie.Models.Genre;
 import com.example.sasidu.movie.Models.Movie;
 
 import org.json.JSONArray;
@@ -25,7 +22,9 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class MovieDetailsActivity extends AppCompatActivity {
+import static com.example.sasidu.movie.Util.Constants.API_KEY;
+
+public class MovieCollectionActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
     private MovieAdapter mMovieAdapter;
@@ -54,7 +53,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
 
     private void parseJson(String genreID){
 
-        String url = "https://api.themoviedb.org/3/genre/"+genreID+"/movies?api_key=26061262b87bbb9018b834fe23feb236&language=en-US&include_adult=false&sort_by=created_at.asc";
+        String url = "https://api.themoviedb.org/3/genre/"+genreID+"/movies?api_key="+API_KEY+"&language=en-US&include_adult=false&sort_by=created_at.asc";
 
         JsonObjectRequest request  = new JsonObjectRequest(Request.Method.GET, url, null
                 , new Response.Listener<JSONObject>() {
@@ -74,7 +73,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
                         mExampleList.add(new Movie(Nsme, imgurl, rating));
                     }
 
-                    mMovieAdapter = new MovieAdapter(MovieDetailsActivity.this,mExampleList);
+                    mMovieAdapter = new MovieAdapter(MovieCollectionActivity.this,mExampleList);
                     mRecyclerView.setAdapter(mMovieAdapter);
 
                 } catch (JSONException e) {
@@ -91,8 +90,6 @@ public class MovieDetailsActivity extends AppCompatActivity {
             }
         });
         mRequestQueue.add(request);
-
-
 
     }
 }

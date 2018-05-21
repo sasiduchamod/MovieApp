@@ -1,15 +1,15 @@
 package com.example.sasidu.movie.Models;
 
-public class Movies {
+public class MovieDescription {
 
     private String Title;
     private  String Ratings;
     private  String Imgurl;
 
-    public Movies() {
+    public MovieDescription() {
     }
 
-    public Movies(String title, String ratings, String imgurl) {
+    public MovieDescription(String title, String ratings, String imgurl) {
         Title = title;
         Ratings = ratings;
         Imgurl = imgurl;

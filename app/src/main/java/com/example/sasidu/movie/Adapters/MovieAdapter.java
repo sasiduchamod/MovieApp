@@ -22,6 +22,7 @@ public class MovieAdapter extends RecyclerView.Adapter <MovieAdapter.MiViewHolde
     private Context mContext;
     private List<Movie> mData;
 
+
     public MovieAdapter(Context mContext, List<Movie> mData) {
         this.mContext = mContext;
         this.mData = mData;
@@ -45,6 +46,8 @@ public class MovieAdapter extends RecyclerView.Adapter <MovieAdapter.MiViewHolde
         Picasso.with(mContext)
                 .load(Constants.IMAGE_BASE_URL+currentItem.getmUrl())
                 .into(holder.imgurl);
+
+
 
 
     }
