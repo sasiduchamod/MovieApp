@@ -1,6 +1,8 @@
 package com.example.sasidu.movie.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +12,8 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.sasidu.movie.Models.Movie;
+import com.example.sasidu.movie.MovieCollectionActivity;
+import com.example.sasidu.movie.MovieDetailActivity;
 import com.example.sasidu.movie.R;
 import com.example.sasidu.movie.Util.Constants;
 import com.squareup.picasso.Picasso;
@@ -41,13 +45,21 @@ public class MovieAdapter extends RecyclerView.Adapter <MovieAdapter.MiViewHolde
     public void onBindViewHolder(MiViewHolder holder, int position) {
         Movie currentItem = mData.get(position);
 
+        final Movie tItem = mData.get(position);
         holder.movie_tittle.setText(currentItem.getmName());
         holder.rating.setRating(Float.parseFloat(currentItem.getmRating()));
         Picasso.with(mContext)
                 .load(Constants.IMAGE_BASE_URL+currentItem.getmUrl())
                 .into(holder.imgurl);
 
-
+        holder.genreCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, MovieDetailActivity.class);
+                intent.putExtra("id",tItem.getmId());
+                mContext.startActivity(intent);
+            }
+        });
 
 
     }
@@ -62,6 +74,7 @@ public class MovieAdapter extends RecyclerView.Adapter <MovieAdapter.MiViewHolde
         TextView movie_tittle;
         ImageView imgurl;
         RatingBar rating;
+        CardView genreCard;
 
         public MiViewHolder(View itemView) {
             super(itemView);
@@ -69,6 +82,7 @@ public class MovieAdapter extends RecyclerView.Adapter <MovieAdapter.MiViewHolde
             movie_tittle = (TextView) itemView.findViewById(R.id.movie_name);
             imgurl = (ImageView) itemView.findViewById(R.id.image_id);
             rating = (RatingBar) itemView.findViewById(R.id.ratingBar);
+            genreCard = itemView.findViewById(R.id.movieCardView);
 
 
         }

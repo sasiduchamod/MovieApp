@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MovieDetailActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+    <ImageView
+        android:id="@+id/bd_view"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/ic_launcher"/>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/p_view"
+            android:layout_width="117dp"
+            android:layout_height="100dp"
+            android:layout_margin="8dp"
+            android:src="@mipmap/ic_launcher" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/movie_title_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Create Name"
+                android:textColor="@android:color/black"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <RatingBar
+                android:id="@+id/ratingBar_view"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:isIndicator="true"
+                android:numStars="5"
+                android:stepSize="0.1" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+            <ImageButton
+                android:id="@+id/btn1"
+                android:layout_width="60dip"
+                android:layout_height="50dip"
+                android:scaleType="centerCrop"
+                android:background="@drawable/youtube"/>
+
+                <ImageButton
+                    android:id="@+id/btn2"
+                    android:layout_width="70dip"
+                    android:layout_height="50dip"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/imdb"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border"
+        android:fontFamily="serif"
+        android:text="Overview"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
+        android:layout_margin="8dp"/>
+
+    <TextView
+        android:id="@+id/overview_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:fontFamily="serif"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border"
+        android:fontFamily="serif"
+        android:text="Release Date"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
+        android:layout_margin="8dp"/>
+
+    <TextView
+        android:id="@+id/rdate"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_margin="8dp"
+        android:fontFamily="serif"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/popularity_view"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_margin="8dp"/>
+
+    <TextView
+        android:id="@+id/language_view"
+        android:layout_width="match_parent"
+        android:layout_height="25dp" />
+
+    <TextView
+        android:id="@+id/runtime_view"
+        android:layout_width="match_parent"
+        android:layout_height="25dp" />
+
+    <TextView
+        android:id="@+id/revenue_view"
+        android:layout_width="match_parent"
+        android:layout_height="25dp" />
+
+    <TextView
+        android:id="@+id/votecount_view"
+        android:layout_width="match_parent"
+        android:layout_height="25dp" />
+
+    <TextView
+        android:id="@+id/budget_view"
+        android:layout_width="match_parent"
+        android:layout_height="25dp" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

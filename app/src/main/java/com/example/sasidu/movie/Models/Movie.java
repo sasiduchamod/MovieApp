@@ -5,12 +5,17 @@ public class Movie {
     private String mName;
     private  String mUrl;
     private  String mRating;
+    private String mId;
 
-    public Movie(String mName, String mUrl, String mRating) {
+    public Movie(String mName, String mUrl, String mRating, String mId) {
         this.mName = mName;
         this.mUrl = mUrl;
         this.mRating = mRating;
+        this.mId= mId;
+
     }
+
+    public String getmId(){return  mId;}
 
     public String getmName() {
         return mName;

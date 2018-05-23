@@ -68,9 +68,10 @@ public class MovieCollectionActivity extends AppCompatActivity {
                         String Nsme = gen.getString("original_title");
                         String rating = gen.getString("vote_average");
                         String imgurl = gen.getString("poster_path");
+                        String mid = gen.getString("id");
 
 
-                        mExampleList.add(new Movie(Nsme, imgurl, rating));
+                        mExampleList.add(new Movie(Nsme, imgurl, rating, mid));
                     }
 
                     mMovieAdapter = new MovieAdapter(MovieCollectionActivity.this,mExampleList);
