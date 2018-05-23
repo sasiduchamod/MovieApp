@@ -37,11 +37,13 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_margin="8dp">
             <TextView
                 android:id="@+id/movie_title_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
                 android:fontFamily="sans-serif-condensed"
                 android:text="Create Name"
                 android:textColor="@android:color/black"
@@ -53,6 +55,7 @@
                 style="?android:attr/ratingBarStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="8dp"
                 android:layout_gravity="left"
                 android:isIndicator="true"
                 android:numStars="5"
@@ -64,17 +67,19 @@
                 android:orientation="horizontal">
             <ImageButton
                 android:id="@+id/btn1"
-                android:layout_width="60dip"
-                android:layout_height="50dip"
+                android:layout_width="50dip"
+                android:layout_height="30dip"
                 android:scaleType="centerCrop"
-                android:background="@drawable/youtube"/>
+                android:background="@drawable/youtube"
+                android:layout_margin="5dp"/>
 
                 <ImageButton
                     android:id="@+id/btn2"
-                    android:layout_width="70dip"
-                    android:layout_height="50dip"
+                    android:layout_width="60dip"
+                    android:layout_height="30dip"
                     android:scaleType="centerCrop"
-                    android:background="@drawable/imdb"/>
+                    android:background="@drawable/imdb"
+                    android:layout_margin="5dp"/>
             </LinearLayout>
 
         </LinearLayout>
@@ -95,13 +100,13 @@
         android:textSize="18sp"
         android:layout_margin="8dp"/>
 
-    <TextView
-        android:id="@+id/overview_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:fontFamily="serif"
-        android:textColor="@android:color/black" />
+            <TextView
+                android:id="@+id/overview_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:fontFamily="serif"
+                android:textColor="@android:color/black" />
 
     <TextView
         android:id="@+id/textView2"
@@ -114,44 +119,136 @@
         android:textSize="18sp"
         android:layout_margin="8dp"/>
 
-    <TextView
-        android:id="@+id/rdate"
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:layout_margin="8dp"
-        android:fontFamily="serif"
-        android:textSize="14sp" />
+            <TextView
+                android:id="@+id/rdate"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:fontFamily="serif"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
 
-    <TextView
-        android:id="@+id/popularity_view"
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:layout_margin="8dp"/>
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border"
+                android:fontFamily="serif"
+                android:textColor="@android:color/background_light"
+                android:text="Popularity"
+                android:textSize="18sp"
+                android:layout_margin="8dp"/>
 
-    <TextView
-        android:id="@+id/language_view"
-        android:layout_width="match_parent"
-        android:layout_height="25dp" />
+            <TextView
 
-    <TextView
-        android:id="@+id/runtime_view"
-        android:layout_width="match_parent"
-        android:layout_height="25dp" />
+                android:id="@+id/popularity_view"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:fontFamily="serif"
+                android:textColor="@android:color/black" />
 
-    <TextView
-        android:id="@+id/revenue_view"
-        android:layout_width="match_parent"
-        android:layout_height="25dp" />
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border"
+                android:fontFamily="serif"
+                android:textColor="@android:color/background_light"
+                android:text="Language"
+                android:textSize="18sp"
+                android:layout_margin="8dp"/>
 
-    <TextView
-        android:id="@+id/votecount_view"
-        android:layout_width="match_parent"
-        android:layout_height="25dp" />
+            <TextView
+                android:id="@+id/language_view"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_height="25dp"
+                android:fontFamily="serif"
+                android:textColor="@android:color/black" />
 
-    <TextView
-        android:id="@+id/budget_view"
-        android:layout_width="match_parent"
-        android:layout_height="25dp" />
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border"
+                android:fontFamily="serif"
+                android:textColor="@android:color/background_light"
+                android:text="Run Time"
+                android:textSize="18sp"
+                android:layout_margin="8dp"/>
+
+            <TextView
+                android:id="@+id/runtime_view"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_height="25dp"
+                android:fontFamily="serif"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border"
+                android:fontFamily="serif"
+                android:textColor="@android:color/background_light"
+                android:text="Revenue"
+                android:textSize="18sp"
+                android:layout_margin="8dp"/>
+
+            <TextView
+                android:id="@+id/revenue_view"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_height="25dp"
+                android:fontFamily="serif"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border"
+                android:fontFamily="serif"
+                android:textColor="@android:color/background_light"
+                android:text="Vote Count"
+                android:textSize="18sp"
+                android:layout_margin="8dp"/>
+
+            <TextView
+                 android:id="@+id/votecount_view"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_height="25dp"
+                android:fontFamily="serif"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border"
+                android:fontFamily="serif"
+                android:textColor="@android:color/background_light"
+                android:text="Budget"
+                android:textSize="18sp"
+                android:layout_margin="8dp"/>
+
+            <TextView
+                android:id="@+id/budget_view"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_height="25dp"
+                android:fontFamily="serif"
+                android:textColor="@android:color/black"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

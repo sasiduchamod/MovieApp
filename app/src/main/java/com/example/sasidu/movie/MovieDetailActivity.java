@@ -162,6 +162,7 @@ public class MovieDetailActivity extends AppCompatActivity {
                 String vcount = null;
                 String budget = null;
                 String imdbid = null;
+                String Name = null;
                 try {
                     bckdrp = response.getString("backdrop_path");
                     poster = response.getString("poster_path");
@@ -170,7 +171,16 @@ public class MovieDetailActivity extends AppCompatActivity {
                     overview = response.getString("overview");
                     rdate = response.getString("release_date");
                     popularity = response.getString("popularity");
-                    language = response.getString("spoken_languages");
+
+
+                    JSONArray jsonArray = response.getJSONArray("spoken_languages");
+                        for (int i = 0; i < 1; i++ )
+                            {
+                                JSONObject gen = jsonArray.getJSONObject(i);
+
+                                 language = gen.getString("name");
+                            }
+
                     runtime = response.getString("runtime");
                     revenue = response.getString("revenue");
                     vcount = response.getString("vote_count");
@@ -195,10 +205,10 @@ public class MovieDetailActivity extends AppCompatActivity {
                         mrdate.setText(rdate);
                         mpopularity.setText(popularity);
                         mlanguage.setText(language);
-                        mruntime.setText(runtime);
-                        mrevenue.setText(revenue);
+                        mruntime.setText(runtime+"min");
+                        mrevenue.setText(revenue+" USD");
                         mvcount.setText(vcount);
-                        mbudget.setText(budget);
+                        mbudget.setText(budget+" USD");
 
                 final String finalImdbid = imdbid;
                 mbutton2.setOnClickListener(new View.OnClickListener() {
