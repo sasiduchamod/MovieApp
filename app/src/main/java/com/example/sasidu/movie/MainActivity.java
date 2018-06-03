@@ -1,9 +1,15 @@
 package com.example.sasidu.movie;
 
+import android.app.FragmentTransaction;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -28,11 +34,38 @@ public class MainActivity extends AppCompatActivity {
     private GenreAdapter mGenreAdapter;
     private ArrayList<Genre> mExampleList;
     private RequestQueue mRequestQueue;
+    private DrawerLayout mDrawerlayout;
+    private ActionBarDrawerToggle mToggle;
+    private NavigationView mNavigation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        mNavigation = (NavigationView) findViewById(R.id.navigation_view);
+        mNavigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()){
+
+
+
+
+                }
+                return false;
+            }
+        });
+
+        mDrawerlayout = (DrawerLayout) findViewById(R.id.drawerLayout);
+        mToggle = new ActionBarDrawerToggle(this, mDrawerlayout, R.string.open, R.string.close);
+
+        mDrawerlayout.addDrawerListener(mToggle);
+        mToggle.syncState();
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mRecyclerView = findViewById(R.id.recycler_view);
         mRecyclerView.setHasFixedSize(true);
@@ -41,6 +74,18 @@ public class MainActivity extends AppCompatActivity {
         mExampleList = new ArrayList<>();
         mRequestQueue = Volley.newRequestQueue(this);
         parseJson();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if(mToggle.onOptionsItemSelected(item)){
+
+            return true;
+
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     private void parseJson(){

@@ -46,8 +46,8 @@ public class GenreAdapter extends RecyclerView.Adapter <GenreAdapter.ExampleView
                 .into(holder.genreImage);
         final String id = currentItem.getId();
         String Name = currentItem.getName();
-        holder.mId.setText(id);
-        holder.mName.setText(Name);
+//        holder.mId.setText(id);
+//        holder.mName.setText(Name);
 
         holder.genreCard.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,15 +67,15 @@ public class GenreAdapter extends RecyclerView.Adapter <GenreAdapter.ExampleView
 
     public class ExampleViewHolder extends RecyclerView.ViewHolder{
 
-        public TextView mId;
-        public TextView mName;
+//        public TextView mId;
+//        public TextView mName;
         ImageView genreImage;
         CardView genreCard;
 
         public ExampleViewHolder(View itemView) {
             super(itemView);
-            mId = itemView.findViewById(R.id.text_view_id);
-            mName = itemView.findViewById(R.id.text_view_name);
+//            mId = itemView.findViewById(R.id.text_view_id);
+//            mName = itemView.findViewById(R.id.text_view_name);
             genreImage = itemView.findViewById(R.id.image_view);
             genreCard = itemView.findViewById(R.id.genreCard);
 

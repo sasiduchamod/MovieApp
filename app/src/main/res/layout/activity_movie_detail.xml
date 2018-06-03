@@ -18,8 +18,7 @@
         android:id="@+id/bd_view"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:scaleType="centerCrop"
-        android:src="@mipmap/ic_launcher"/>
+        android:scaleType="centerCrop" />
 
 
     <LinearLayout
@@ -32,7 +31,7 @@
             android:layout_width="117dp"
             android:layout_height="100dp"
             android:layout_margin="8dp"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@drawable/giphy" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -129,7 +128,29 @@
                 android:textColor="@android:color/black"
                 android:textSize="14sp" />
 
+            <TextView
+                android:id="@+id/text8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border"
+                android:fontFamily="serif"
+                android:text="Actors"
+                android:textColor="@android:color/background_light"
+                android:textSize="18sp"
+                android:layout_margin="8dp"/>
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/act_rycle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                </android.support.v7.widget.RecyclerView>
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/textView3"

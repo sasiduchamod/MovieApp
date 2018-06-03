@@ -43,7 +43,7 @@ public class MovieCollectionActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String genreID = intent.getStringExtra("genreID");
-        Toast.makeText(this, genreID, Toast.LENGTH_SHORT).show();
+        // st.makeText(this, genreID, Toast.LENGTH_SHORT).show();
 
         mExampleList = new ArrayList<>();
         mRequestQueue = Volley.newRequestQueue(this);

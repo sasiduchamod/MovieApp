@@ -21,8 +21,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.sasidu.movie.Adapters.ActorAdapter;
 import com.example.sasidu.movie.Adapters.DescriptionAdapter;
 import com.example.sasidu.movie.Adapters.MovieAdapter;
+import com.example.sasidu.movie.Models.Actors;
 import com.example.sasidu.movie.Models.Movie;
 import com.example.sasidu.movie.Models.MovieDescription;
 import com.example.sasidu.movie.Util.Constants;
@@ -38,9 +40,8 @@ import static com.example.sasidu.movie.Util.Constants.API_KEY;
 
 public class MovieDetailActivity extends AppCompatActivity {
 
-    private RecyclerView mRecycleView;
-    private DescriptionAdapter mDescriptionAdapter;
     private ArrayList<MovieDescription> mExampleList;
+    private ArrayList<Actors> mExampleList2;
     private RequestQueue mRequestQueue;
     private ImageView backGround;
     private ImageView mposter;
@@ -56,6 +57,8 @@ public class MovieDetailActivity extends AppCompatActivity {
     private TextView mbudget;
     private ImageButton mbutton;
     private ImageButton mbutton2;
+    private ActorAdapter mActorAdapter;
+    private RecyclerView mRecyclerView;
 
 
 
@@ -78,18 +81,71 @@ public class MovieDetailActivity extends AppCompatActivity {
         mbutton = findViewById(R.id.btn1);
         mbutton2= findViewById(R.id.btn2);
 
+        mRecyclerView = findViewById(R.id.act_rycle);
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        mExampleList2 = new ArrayList<>();
+
         Intent intent = getIntent();
         String movieID = intent.getStringExtra("id");
 //        Toast.makeText(this, movieID, Toast.LENGTH_SHORT).show();
+
 
         mExampleList = new ArrayList<>();
 
         mRequestQueue = Volley.newRequestQueue(this);
         parseJSON(movieID, getApplicationContext());
         parseJSon2(movieID, getApplicationContext());
+        parseJson3(movieID, getApplicationContext());
     }
 
+    private void parseJson3(String movieID, final Context applicationContext){
 
+        String url = "https://api.themoviedb.org/3/movie/"+movieID+"/credits?api_key="+API_KEY;
+
+        JsonObjectRequest request  = new JsonObjectRequest(Request.Method.GET, url, null
+                , new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    JSONArray jsonArray = response.getJSONArray("cast");
+                    for (int i = 0; i <jsonArray.length(); i++ )
+                    {
+                        JSONObject gen = jsonArray.getJSONObject(i);
+
+                        String id = gen.getString("id");
+                        String cname = gen.getString("character");
+                        String name = gen.getString("name");
+                        String ppath = gen.getString("profile_path");
+
+
+
+                        mExampleList2.add(new Actors(id, ppath, cname, name));
+                    }
+
+                    mActorAdapter = new ActorAdapter(MovieDetailActivity.this,mExampleList2);
+                    LinearLayoutManager layoutManager
+                            = new LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false);
+                    mRecyclerView.setLayoutManager(layoutManager);
+                    mRecyclerView.setAdapter(mActorAdapter);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+
+            }
+        });
+        mRequestQueue.add(request);
+
+    }
     private  void  parseJSon2(String movieID, Context applicationContext)
     {
         String url ="https://api.themoviedb.org/3/movie/"+movieID+"/videos?api_key="+API_KEY+"&language=en-US";
@@ -162,7 +218,7 @@ public class MovieDetailActivity extends AppCompatActivity {
                 String vcount = null;
                 String budget = null;
                 String imdbid = null;
-                String Name = null;
+
                 try {
                     bckdrp = response.getString("backdrop_path");
                     poster = response.getString("poster_path");

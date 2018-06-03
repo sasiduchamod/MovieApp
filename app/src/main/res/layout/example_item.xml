@@ -19,19 +19,6 @@
             android:layout_height="200dp"
             android:src="@mipmap/ic_launcher"/>
 
-        <TextView
-            android:id="@+id/text_view_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" 
-            android:text="genre id"
-            android:textColor="@android:color/black"
-            android:textSize="20sp"/>  
-        
-        <TextView
-            android:id="@+id/text_view_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="genre Name :"/>
 
     </LinearLayout>
 
